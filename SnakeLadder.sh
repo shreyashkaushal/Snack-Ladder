@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "Snake Ladder game simulation"
+echo "Game started"
+player1=0
