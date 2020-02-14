@@ -1,2 +1,9 @@
 #!/bin/bash
-echo "Snake Ladder game simulation"
+die=$$
+rollingDie(){
+	die=$((((RANDOM%6))+1))
+	echo "$die"
+	return $die
+}
+rollingDie
+
