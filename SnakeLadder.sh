@@ -25,6 +25,16 @@ echo -n " "
     echo " "
 done
 echo "===================================================================="
+#useCase1
 echo "Game started"
 player1=0
+#useCase2
+die=$$
+rollingDie(){
+	die=$((((RANDOM%6))+1))
+	echo "$die"
+	return $die
+}
+
+
 
