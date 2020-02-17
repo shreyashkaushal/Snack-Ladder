@@ -29,10 +29,10 @@ playSnakeLadder(){
 				then
 					player1=$temp
 					echo "its a Ladder you have to step $res forward "
-					echo "player1 is at position $player1"
+					echo "player is at position $player1"
 				fi
 				echo "its a Ladder you have to step $res forward "
-				echo "player1 is at position $player1"
+				echo "player is at position $player1"
 			elif (($option==2))
 				then
 					rollingDie
@@ -53,37 +53,47 @@ playSnakeLadder(){
   	# 	echo "player 1 won"
   	# 	break;
   	# fi
-  return $player1
+  	return $player1
   done
 }
-echo "die count is $dieCount"
 
 echo "Enter your choice to play snake ladder game :-"
 echo "1. Start 3. Stop"
+	input=1
+
 while (($player1<=100))
 do
-	read input
 	case $input in
 		1) playSnakeLadder $p1
-			p1=$?
-			echo "$p1"
-			if(($p1==100))
-			then
-			echo "player 1 won"
-			return 
-			fi	
-			read input 
+p1=$?
+echo "$p1"
+if(($p1==100))
+then
+	echo "player 1 won"
+	echo "die count is $dieCount"
+	break 
+fi	
+echo "enter 2 for player 2"
+#read input
+input=2 
 ;;
-		2) playSnakeLadder $p2
-			p2=$?
-			if(($p2==100))
-			then
-			echo "player 2 won"
-			return 
-			fi 
-			;;
+2) playSnakeLadder $p2
+p2=$?
+if(($p2==100))
+then
+	echo "player 2 won"
+	echo "die count is $dieCount"
+	break
+fi 
+echo "enter 1 for player 1"
+#read input
+input=1
+
+;;
 3)
 break
 ;; 
 esac
 done
+
+
