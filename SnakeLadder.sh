@@ -10,7 +10,6 @@ dieCount=0
 playSnakeLadder(){
 	while(($((player1<=100))))
 	do
-
 		option=$$
 		option=$((RANDOM%3))
 		if(($option==0))
@@ -19,8 +18,8 @@ playSnakeLadder(){
 		elif(($option==1))
 			then
 				rollingDie
-				dieCount=$((dieCount+1))
 				res=$?
+				dieCount=$(($dieCount+1))
 				temp=$player1
 				player1=$((player1+res))
 				if(($player1>100))
@@ -34,8 +33,8 @@ playSnakeLadder(){
 			elif (($option==2))
 				then
 					rollingDie
-					dieCount=$((dieCount+1))
 					res=$?
+					dieCount=$(($dieCount+1))
 					echo "its a snake bite "
   		#echo "debug $player1"
   		player1=$((player1-res))
@@ -52,9 +51,8 @@ playSnakeLadder(){
   		break;
   	fi
   done
- echo "no of times die rolled is $dieCount"
+  echo "die count is $dieCount"
 }
-
 
 echo "Enter your choice to play snake ladder game :-"
 echo "1. Start 2. Stop"
