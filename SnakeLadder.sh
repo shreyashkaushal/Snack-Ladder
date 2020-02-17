@@ -7,24 +7,24 @@ for((i=0;i<10;i++))
 do
 	a=$num1
 	b=$num2
-echo -n " " 
+	echo -n " " 
 	for((j=0;j<10;j++))
 	do
-	if(($((i%2))==1))
-	then
-		echo -n "$b ||"
-		b=$((b+1))
-	elif(($((i%2))==0)) 
-	then
-		echo -n "$a ||"
-		a=$((a-1))
-	fi
+		if(($((i%2))==1))
+		then
+			echo -n "$b ||"
+			b=$((b+1))
+		elif(($((i%2))==0)) 
+			then
+				echo -n "$a ||"
+				a=$((a-1))
+			fi
+		done
+		num1=$((num1-10))
+		num2=$((num2-10))	
+		echo " "
 	done
-	num1=$((num1-10))
-	num2=$((num2-10))	
-    echo " "
-done
-echo "===================================================================="
+	echo "===================================================================="
 #useCase1
 echo "Game started"
 player1=0
@@ -38,24 +38,25 @@ rollingDie(){
 }
 #useCase3
 playSnakeLadder(){
-option=$$
-option=$((RANDOM%3))
- if(($option==0))
- then
- 	echo "stay wherever you are"
-  elif(($option==1))
-  	then
-  		rollingDie
-  		res=$?
-  		echo "its a Ladder you have to step $res forward "
-  		player1=$((player1+res))
-  		echo "player1 is at position $player1"
-  	elif (($option==2))
-  		then
-  		rollingDie
-  		res=$?
-  		echo "its a snake bite "
+	option=$$
+	option=$((RANDOM%3))
+	if(($option==0))
+	then
+		echo "stay wherever you are"
+	elif(($option==1))
+		then
+			rollingDie
+			res=$?
+			echo "its a Ladder you have to step $res forward "
+			player1=$((player1+res))
+			echo "player1 is at position $player1"
+		elif (($option==2))
+			then
+				rollingDie
+				res=$?
+				echo "its a snake bite "
 #useCase4
+playSnakeLadder(){
 	while(($((player1<=100))))
 	do
 		option=$$
@@ -67,7 +68,19 @@ option=$((RANDOM%3))
 			then
 				rollingDie
 				res=$?
+
 				player1=$((player1+res))
+
+				temp=$player1
+				#useCase5
+				player1=$((player1+res))
+				if(($player1>100))
+				then
+					player1=$temp
+					echo "its a Ladder you have to step $res forward "
+					echo "player1 is at position $player1"
+				fi
+
 				echo "its a Ladder you have to step $res forward "
 				echo "player1 is at position $player1"
 			elif (($option==2))
@@ -75,40 +88,62 @@ option=$((RANDOM%3))
 					rollingDie
 					res=$?
 					echo "its a snake bite "
+		#echo "debug $player1"
+		player1=$((player1-res))
+		if(($player1<=0))
+		then
+			echo "you are at starting place only"
+			player1=0
+		fi
+		echo "player1 is at position $player1 after stepping $res backward"
 
-  		#echo "debug $player1"
-  		player1=$((player1-res))
-  		if(($player1<=0))
-  		then
-  			echo "you are at starting place only"
-  			player1=0
-  		fi
-  		echo "player1 is at position $player1 after stepping $res backward"
 
- fi
+	fi
 
 }
 done
 
 }
+
+fi
+if(($player1==100))
+then
+	echo "player 1 won"
+	break;
+fi
+done
+}
+
+
 echo "Enter your choice to play snake ladder game :-"
 echo "1. Start 2. Stop"
 while :
 do
-read input
-case $input in
-	1) playSnakeLadder
-       	;;
-	2) break
-		;; 
-esac
-done
 
 	read input
 	case $input in
 		1) playSnakeLadder
-			;;
-		2) break
-			;; 
+;;
+2) break
+;; 
 esac
 done
+
+read input
+case $input in
+	1) playSnakeLadder
+;;
+2) break
+;; 
+esac
+done
+
+read input
+case $input in
+	1) playSnakeLadder
+;;
+2) break
+;; 
+esac
+done
+
