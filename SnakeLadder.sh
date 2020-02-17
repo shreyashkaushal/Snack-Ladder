@@ -18,14 +18,7 @@ playSnakeLadder(){
 			then
 				rollingDie
 				res=$?
-				temp=$player1
 				player1=$((player1+res))
-				if(($player1>100))
-				then
-					player1=$temp
-					echo "its a Ladder you have to step $res forward "
-					echo "player1 is at position $player1"
-				fi
 				echo "its a Ladder you have to step $res forward "
 				echo "player1 is at position $player1"
 			elif (($option==2))
@@ -42,12 +35,7 @@ playSnakeLadder(){
   		fi
   		echo "player1 is at position $player1 after stepping $res backward"
   	fi
-  	if(($player1==100))
-  	then
-  		echo "player 1 won"
-  		break;
-  	fi
-  done
+  	done
 
 }
 
